@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)file:///C:/Users/Rahul%20Kumar/Downloads/index%20(2).html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Journey to the Center of the Earth</title>
+<!-- FONTS: Playfair Display (headings) + Nunito (text) + Space Mono (numbers). Needs internet; fallbacks are set below. -->
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./Journey to the Center of the Earth  final_files/css2" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Nunito', 'Segoe UI', sans-serif;
+    color: #fff;
+    background: linear-gradient(to bottom,
+      #8fd3ff 0%, #6b4a2b 10%, #4a3320 26%, #7a2e12 50%, #d4561a 74%, #ffd873 100%);
+  }
+  section {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 60px 24px; position: relative;
+  }
+  .hero { color: #12324a; }
+  h1, h2 { font-family: 'Playfair Display', Georgia, serif; }
+  h1 { font-size: clamp(2.4rem, 8vw, 5rem); line-height: 1.1; }
+  h2 { font-size: clamp(2rem, 5vw, 3.4rem); margin-bottom: 14px; }
+  p  { max-width: 560px; font-size: 1.15rem; line-height: 1.7; }
+  .tag { font-family: 'Space Mono', monospace; font-size: .85rem; letter-spacing: 3px;
+         text-transform: uppercase; opacity: .75; margin-bottom: 10px; }
+  .sub { font-style: italic; margin-top: 14px; opacity: .8; }
+  .hint { margin-top: 30px; font-size: 2rem; animation: bounce 1.5s infinite; }
+  @keyframes bounce { 50% { transform: translateY(12px); } }
+
+  /* fade-in */
+  .fade { opacity: 0; transform: translateY(40px); transition: 1s ease; }
+  .fade.show { opacity: 1; transform: none; }
+
+  /* stat cards */
+  .stats { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 26px 0 6px; }
+  .stat { background: rgba(0,0,0,.35); border-radius: 14px; padding: 12px 18px; min-width: 120px; }
+  .stat b { display: block; font-family: 'Space Mono', monospace; font-size: 1.2rem; color: #ffd873; }
+  .stat span { font-size: .8rem; opacity: .8; }
+
+  /* did-you-know box */
+  .know { margin-top: 22px; max-width: 520px; text-align: left; font-size: 1rem; line-height: 1.6;
+          background: rgba(255,255,255,.12); border-left: 4px solid #ffd873;
+          padding: 14px 18px; border-radius: 0 12px 12px 0; }
+  .know strong { color: #ffd873; }
+
+  .emoji { font-size: 3.2rem; margin-top: 18px; }
+  .cloud { position: absolute; top: 12vh; font-size: 4rem; animation: drift 18s linear infinite alternate; }
+  .cloud.two { top: 28vh; font-size: 3rem; animation-duration: 26s; }
+  @keyframes drift { from { left: 5%; } to { left: 80%; } }
+
+  /* depth meter */
+  #meter { position: fixed; right: 16px; top: 50%; transform: translateY(-50%);
+    background: rgba(0,0,0,.55); padding: 14px 16px; border-radius: 14px;
+    font-family: 'Space Mono', monospace; text-align: center; z-index: 10; backdrop-filter: blur(6px); }
+  #meter small { display: block; opacity: .7; font-size: .65rem; }
+  #depth { font-size: 1.3rem; color: #ffd873; }
+  #temp { font-size: .8rem; margin-top: 4px; }
+  #layer { font-size: .75rem; margin-top: 6px; }
+  #bar { width: 6px; height: 120px; background: #333; margin: 10px auto 0; border-radius: 3px; overflow: hidden; }
+  #fill { width: 100%; height: 0%; background: #ffd873; }
+
+  /* top progress line */
+  #line { position: fixed; top: 0; left: 0; height: 4px; width: 0; background: #ffd873; z-index: 20; }
+
+  footer { background: rgba(0,0,0,.45); padding: 30px 20px; text-align: center; font-size: .95rem; line-height: 1.7; }
+  footer a { color: #ffd873; cursor: pointer; }
+
+  @media (max-width: 600px) { #meter { right: 6px; padding: 8px 10px; } #bar { display: none; } }
+
+  /* comparison list + myth cards */
+  .compare { list-style: none; max-width: 520px; margin-top: 20px; text-align: left; }
+  .compare li { background: rgba(0,0,0,.3); margin-bottom: 10px; padding: 12px 16px; border-radius: 12px; line-height: 1.5; }
+  .compare li b { color: #ffd873; }
+  .myth { max-width: 520px; margin-top: 16px; background: rgba(255,255,255,.12); border-radius: 14px; padding: 16px 20px; text-align: left; line-height: 1.6; }
+  .myth .no  { color: #ff9d8a; font-weight: 600; }
+  .myth .yes { color: #b6f2a3; font-weight: 600; }
+  .note { font-family: 'Space Mono', monospace; font-size: .8rem; opacity: .7; margin-top: 18px; }
+</style>
+</head>
+<body>
+<div id="line" style="width: 13.4343%;"></div>
+<div id="meter">
+  <small>DEPTH</small>
+  <div id="depth">856 km</div>
+  <div id="temp">738 °C</div>
+  <div id="layer">Lower Mantle</div>
+  <div id="bar"><div id="fill" style="height: 13.4343%;"></div></div>
+</div>
+
+<section class="hero">
+  <span class="cloud">☁️</span><span class="cloud two">☁️</span>
+  <div class="tag">0 km · 15 °C</div>
+  <h1>Journey to the<br>Center of the Earth</h1>
+  <p class="sub">Grab a seat. This trip is 6,371 km long, and your scroll wheel is the only vehicle you need.</p>
+  <!-- WRITE YOUR OWN LINE HERE -->
+  <p>Humans have barely dented the planet we live on: the deepest hole ever drilled is just 12 km. So let's go much further, one scroll at a time, and see what is down there.</p>
+  <div class="hint">⬇</div>
+</section>
+
+<section>
+  <div class="fade show">
+    <div class="tag">0 – 35 km</div>
+    <h2>The Crust</h2>
+    <p>The thin, cool shell we live on. Under the oceans it is only about 5 km thick, and under mountains it can reach 70 km.</p>
+    <div class="stats">
+      <div class="stat"><b>12 km</b><span>deepest hole drilled</span></div>
+      <div class="stat"><b>~200 °C</b><span>at the bottom</span></div>
+      <div class="stat"><b>&lt; 1%</b><span>of Earth's volume</span></div>
+    </div>
+    <div class="know"><strong>Did you know?</strong> The Kola Superdeep Borehole in Russia took about 20 years to drill, and it only scratched the surface.</div>
+    <div class="emoji">🦴 🐚 🦕</div>
+  </div>
+</section>
+
+<section>
+  <div class="fade show">
+    <div class="tag">35 – 410 km</div>
+    <h2>The Upper Mantle</h2>
+    <p>Solid rock that flows extremely slowly, a few centimetres a year, about as fast as your fingernails grow. This drift moves entire continents.</p>
+    <div class="stats">
+      <div class="stat"><b>~900 °C</b><span>at the top</span></div>
+      <div class="stat"><b>~1,300 °C</b><span>further down</span></div>
+    </div>
+    <div class="know"><strong>Did you know?</strong> Most natural diamonds form 150 km or more below the surface and are carried up by rare volcanic eruptions.</div>
+    <div class="emoji">💎</div>
+  </div>
+</section>
+
+<section>
+  <div class="fade show">
+    <div class="tag">410 – 2,890 km</div>
+    <h2>The Lower Mantle</h2>
+    <p>The biggest layer by volume, making up over half of the planet. Pressure here squeezes rock into dense crystal forms that do not exist at the surface.</p>
+    <div class="stats">
+      <div class="stat"><b>1,900 – 3,700 °C</b><span>temperature</span></div>
+      <div class="stat"><b>~1.3 million</b><span>times air pressure</span></div>
+    </div>
+    <div class="know"><strong>Did you know?</strong> Scientists think huge blobs of denser material sit at the base of the mantle under Africa and the Pacific. Nobody knows exactly what they are.</div>
+    <div class="emoji">🔥</div>
+  </div>
+</section>
+
+<section>
+  <div class="fade show">
+    <div class="tag">2,890 – 5,150 km</div>
+    <h2>The Outer Core</h2>
+    <p>Liquid iron and nickel, churning like a giant pot. These moving metals act like a dynamo and create Earth's magnetic field, which protects us from solar wind and makes compasses work.</p>
+    <div class="stats">
+      <div class="stat"><b>4,000 – 5,000 °C</b><span>temperature</span></div>
+      <div class="stat"><b>2,260 km</b><span>thick</span></div>
+    </div>
+    <div class="know"><strong>Did you know?</strong> Earth's magnetic north wanders and has flipped completely many times in history, roughly every few hundred thousand years.</div>
+    <div class="emoji">🧲</div>
+  </div>
+</section>
+
+<section>
+  <div class="fade show">
+    <div class="tag">5,150 – 6,371 km</div>
+    <h2>The Inner Core</h2>
+    <p>A solid ball of iron and nickel, roughly the size of the Moon. It is hotter than a Sun-like surface but stays solid because the pressure is so intense.</p>
+    <div class="stats">
+      <div class="stat"><b>~5,400 °C</b><span>temperature</span></div>
+      <div class="stat"><b>~3.6 million</b><span>times air pressure</span></div>
+      <div class="stat"><b>1,220 km</b><span>radius</span></div>
+    </div>
+    <div class="know"><strong>Did you know?</strong> The inner core is slowly growing, by about a millimetre a year, as the liquid outside freezes onto it.</div>
+    <div class="emoji">🌞</div>
+  </div>
+</section>
+
+
+<section>
+  <div class="fade show">
+    <div class="tag">Let's put it in perspective</div>
+    <h2>How Big Is This Trip?</h2>
+    <p>6,371 km sounds abstract, so here is what it looks like in everyday terms.</p>
+    <ul class="compare">
+      <li><b>By car at 100 km/h:</b> about 64 hours of non-stop driving, nearly three days.</li>
+      <li><b>By plane at 900 km/h:</b> a little over 7 hours, shorter than a flight from India to Europe.</li>
+      <li><b>On foot at 5 km/h:</b> around 53 days of walking without sleep.</li>
+      <li><b>Falling through a tunnel:</b> in theory about 42 minutes, if there were no air and no heat.</li>
+    </ul>
+    <div class="note">Times are simple estimates, rounded for fun.</div>
+  </div>
+</section>
+
+<section>
+  <div class="fade show">
+    <div class="tag">Common mix-ups</div>
+    <h2>Myths vs. Reality</h2>
+    <div class="myth"><span class="no">Myth:</span> The Earth's center is a giant ocean of lava.<br><span class="yes">Reality:</span> The mantle is solid rock that flows very slowly. Only small pockets near the surface melt into magma.</div>
+    <div class="myth"><span class="no">Myth:</span> The core is the hottest place we know.<br><span class="yes">Reality:</span> It is about as hot as the Sun's surface, but the Sun's center is thousands of times hotter.</div>
+    <div class="myth"><span class="no">Myth:</span> We could just drill down and look.<br><span class="yes">Reality:</span> Heat and pressure would destroy any drill long before it got close. Even 12 km was a huge struggle.</div>
+  </div>
+</section>
+
+<section>
+  <div class="fade show">
+    <div class="tag">Why it matters</div>
+    <h2>Why Should We Care?</h2>
+    <p>What happens down there shapes life up here. The magnetic field from the outer core shields us from harmful space radiation. Moving mantle rock builds mountains and causes earthquakes and volcanoes. And heat flowing out of the Earth powers geothermal energy, which countries like Iceland already use to heat homes.</p>
+    <div class="emoji">🌋 🧭 ♨️</div>
+  </div>
+</section>
+
+<section>
+  <div class="fade show">
+    <div class="tag">A little thought to take with you</div>
+    <h2>Still Mostly a Mystery</h2>
+    <p>Here's what I find most amazing: we know the surface of Mars and the Moon in far more detail than the ground under our own feet. Everything you just scrolled through was figured out indirectly, from waves, magnets and clever maths. There is still plenty left for the next generation of scientists to find out.</p>
+    <!-- WRITE YOUR OWN REFLECTION HERE: why did you choose this topic? what surprised you? -->
+  </div>
+</section>
+
+<section>
+  <div class="fade show">
+    <div class="tag">How do we know all this?</div>
+    <h2>Listening to Earthquakes</h2>
+    <p>Nobody can dig this deep, so scientists study seismic waves. Earthquake waves speed up, slow down, bend, or vanish depending on what they pass through. By reading them, we mapped the whole interior, and found that liquid layer in the middle.</p>
+    <div class="emoji">🌍 〰️ 📡</div>
+  </div>
+</section>
+
+<section>
+  <div class="fade show">
+    <h2>You made it. 🎉</h2>
+    <p>This is the exact center of the Earth. Gravity here would pull equally in every direction, so you'd weigh almost nothing.</p>
+  </div>
+</section>
+
+<footer>
+  <!-- CHANGE THIS to your own details -->
+  Made by Rahul Kumar · BTech student · built with HTML, CSS and JavaScript<br>
+  Figures are approximate and come from commonly published geology sources (USGS, NASA, textbooks).<br>Thanks for scrolling all the way down!<br>
+  <a onclick="window.scrollTo({top:0})">↑ Back to the surface</a>
+</footer>
+
+<script>
+  const R = 6371;
+  const $ = id => document.getElementById(id);
+  const layers = [[0,'Surface',15],[1,'Crust',15],[35,'Upper Mantle',900],[410,'Lower Mantle',1900],[2890,'Outer Core',4000],[5150,'Inner Core',5000]];
+
+  function update() {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const p = Math.min(Math.max(scrollY / max, 0), 1);
+    const km = Math.round(p * R);
+    $('depth').textContent = km.toLocaleString() + ' km';
+    $('fill').style.height = p * 100 + '%';
+    $('line').style.width = p * 100 + '%';
+    let name = 'Surface', temp = 15;
+    for (const [s, n, t] of layers) if (km >= s) { name = n; temp = t; }
+    // gentle rise in temperature as you go deeper
+    const shown = Math.round(15 + p * 5385);
+    $('layer').textContent = name;
+    $('temp').textContent = shown.toLocaleString() + ' °C';
+  }
+  addEventListener('scroll', update); update();
+
+  const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('show')), { threshold: .25 });
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+</script>
+
+
+</body></html>
